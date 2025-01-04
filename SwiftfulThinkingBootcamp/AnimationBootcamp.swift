@@ -13,7 +13,8 @@ struct AnimationBootcamp: View {
     var body: some View {
         VStack {
             Button("Button") {
-                
+                //MARK: - Option 1
+                // bunlar bir olay olunca tıklayınca edince vs
 //                withAnimation(Animation.default) {
 //                    isAnimated.toggle()
 //                }
@@ -22,14 +23,23 @@ struct AnimationBootcamp: View {
 //                    isAnimated.toggle()
 //                }
                 
-                withAnimation(
-                    Animation
-                        .default
-                        .repeatCount(5, autoreverses: true)
-                ) {
-                    isAnimated.toggle()
-                }
+//                withAnimation(
+//                    Animation
+//                        .default
+//                        .repeatCount(5, autoreverses: true)
+//                ) {
+//                    isAnimated.toggle()
+//                }
                 
+//                withAnimation(
+//                    Animation
+//                        .default
+//                        .repeatForever(autoreverses: true)
+//                ) {
+//                    isAnimated.toggle()
+//                }
+                
+                isAnimated.toggle()
             }
             Spacer()
             RoundedRectangle(
@@ -38,14 +48,16 @@ struct AnimationBootcamp: View {
                     ? 50
                     : 25
             )
-            .fill(isAnimated ? Color.red : Color.green
-            )
+            .fill(isAnimated ? Color.red : Color.green )
             .frame(
                 width: isAnimated ? 100 : 300,
                 height: isAnimated ? 100 : 300
             )
             .rotationEffect(.init(degrees: isAnimated ? 360 : 0))
             .offset(y: isAnimated ? 300 : 0)
+            .animation(Animation // bu kısım deprecated olmuş
+                .default
+                .repeatForever(autoreverses: true))
             Spacer()
         }
     }
