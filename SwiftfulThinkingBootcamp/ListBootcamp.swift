@@ -62,12 +62,16 @@ struct ListBootcamp: View {
 //                        .foregroundStyle(.pink)
                 }
                 
-                Section(isExpanded: $isCollapsable) {
-                    ForEach(veggies, id: \.self) { item in
-                        Text(item.capitalized)
+                if #available(iOS 17.0, *) {
+                    Section(isExpanded: $isCollapsable) {
+                        ForEach(veggies, id: \.self) { item in
+                            Text(item.capitalized)
+                        }
+                    } header: {
+                        Text("Collapsable Veggies")
                     }
-                } header: {
-                    Text("Collapsable Veggies")
+                } else {
+                    // Fallback on earlier versions
                 }
 
 
